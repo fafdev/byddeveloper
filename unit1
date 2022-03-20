@@ -1,0 +1,28 @@
+[AlternativeKey][Label("Job  ID")]  element  id:  ID; 
+[Label("Title")]  element  title:LONG_Description; 
+[Label("Posting  Date")]  element  postingDate:  Date; 
+[Label("Work  Area")]  element  domain:  DomainCode; 
+[Label("Employment Type")] element empType: EmploymentTypeCode; 
+[Label("Hiring  Manager  ID")]  element  hireMgrID:  EmployeeID;
+[Label("Hiring  Manager")]  element  hireMgrName:LANGUAGEINDEPENDENT_LONG_Name; 
+[Label("Country")]  element  jobLocation:  CountryCode;
+[Label("End  Date")]  element  jobEndDate:Date; 
+[Label("Status")]  element  status:JobStatusCode; 
+[Label("Created  On")]  element  creationDate:  Date;
+[Label("Created  By")]  element  createdBy:  LANGUAGEINDEPENDENT_LONG_Name; 
+[Label("Changed  By")]  element  chgdBy:  LANGUAGEINDEPENDENT_LONG_Name; 
+[Label("Changed  On")]  element  chgdOn:  Date;
+
+action  publish; 
+action  obselete; 
+action  close;
+
+[DependentObject(TextCollection)]  node  TextCollection;
+
+node  candidatesApplied  [0,n]
+{
+    [Label("Employee  ID")]	element  empID:  EmployeeID; 
+    [Label("Offer  Status")]  element  offerStatus:  OfferStatusCode;
+
+    action  sendMail;
+}
